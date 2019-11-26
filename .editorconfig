@@ -1,0 +1,32 @@
+# EditorConfig helps maintain consistent coding styles for multiple developers 
+# working on the same project across various editors and IDEs. 
+
+# top-most EditorConfig file
+root = true
+
+# For every file maintain an line at EOF, and consistent spacing and indentation style
+[*]
+end_of_line = lf
+charset = utf-8
+insert_final_newline = true
+indent_style = space
+indent_size = 2
+
+# JavaScript and JSX files
+[*.{js,jsx}]
+indent_style = space
+indent_size = 2
+
+# CSS files
+[*.css]
+indent_style = space
+indent_size = 2
+
+# html files
+[*.html]
+indent_style = space
+indent_size = 2
+
+# diff and markdown files
+[*.{diff, md}]
+trim_trailing_whitespace = false
