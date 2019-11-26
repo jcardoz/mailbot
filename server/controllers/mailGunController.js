@@ -1,11 +1,13 @@
 exports.mail = (request, response) => {
   const mailgun = require("mailgun-js");
-  const DOMAIN = process.env.MAILGRID_DOMAIN
+  const DOMAIN = process.env.MAILGUN_DOMAIN
   const mg = mailgun({
-    apiKey: process.env.MAILGRID_API_KEY,
+    apiKey: process.env.MAILGUN_API_KEY,
     domain: DOMAIN
   });
-  const data = {
+  
+  // TODO: Handle empty fields
+  const messageInformation = {
     from: request.params.from,
     to: request.params.to,
     cc: request.params.cc,
@@ -13,7 +15,8 @@ exports.mail = (request, response) => {
     subject: request.params.subject,
     text: request.params.content
   };
-  mg.messages().send(data, function (error, body) {
+  
+  mg.messages().send(messageInformation, function (error, body) {
     response.json(body);
   }, (error) => {
     response.send(`Something went wrong. ${error.message}`);
