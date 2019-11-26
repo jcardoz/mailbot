@@ -5,7 +5,7 @@ exports.mail = (request, response) => {
   const msg = {
     to: request.params.to.split(','), // Provide an array of comma separated email addresses
     cc: request.params.cc.split(','), // Provide an array of comma separated email addresses
-    bcc: request.params.bcc.split(','), // // Provide an array of comma separated email addresses
+    bcc: request.params.bcc.split(','), // Provide an array of comma separated email addresses
     from: request.params.from,
     subject: request.params.subject,
     text: request.params.content,
