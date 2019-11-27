@@ -64,6 +64,7 @@ class MailForm extends React.Component {
 
   render() {
     return (
+      <div className="form-container">
         <div className="mailForm">
           <h3>Mailbot</h3>
           <form method="post" name="mailForm" >
@@ -98,6 +99,7 @@ class MailForm extends React.Component {
             </div>
           </form>
         </div>
+      </div>  
     );
   }
 
