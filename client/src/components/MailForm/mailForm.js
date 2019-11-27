@@ -64,40 +64,40 @@ class MailForm extends React.Component {
 
   render() {
     return (
-      <div className="container">
         <div className="mailForm">
           <h3>Mailbot</h3>
           <form method="post" name="mailForm" >
-            <div>
-              <label>To:</label>
+            
+            <div className="formControl">
+              <label>To</label>
               <input type="text" name="to" value={this.state.to} onChange={this.handleChange} />
             </div>
 
-            <div>
-              <label>CC:</label>
+            <div className="formControl">
+              <label>CC</label>
               <input type="text" name="cc" value={this.state.cc} onChange={this.handleChange} />
             </div>
             
-            <div>
-              <label>BCC:</label>
+            <div className="formControl">
+              <label>BCC</label>
               <input type="text" name="bcc" value={this.state.bcc} onChange={this.handleChange} />
             </div>
 
-            <div>
-              <label>Subject:</label>
+            <div className="formControl">
+              <label>Subject</label>
               <input type="text" name="subject" value={this.state.subject} onChange={this.handleChange} />
             </div>
             
-            <div>
+            <div className="formControl">
               <label>Message</label>
-              <textarea name="message" value={this.state.message} onChange={this.handleChange} />
+              <textarea name="message" value={this.state.message} onChange={this.handleChange}/>
             </div>
-
-            <input type="button" className="button" value="Send Email via MailGun" onClick={this.handleMailGun} />
-            <input type="button" className="button" value="Send Email via SendGrid" onClick={this.handleSendGrid} />
+            <div className="formControl">
+              <input type="button" className="button" value="Send Email via MailGun" onClick={this.handleMailGun} />
+              <input type="button" className="button" value="Send Email via SendGrid" onClick={this.handleSendGrid} />
+            </div>
           </form>
         </div>
-      </div>
     );
   }
 
