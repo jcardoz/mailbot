@@ -29,11 +29,11 @@ npm run server-install
 The server project uses Sendgrid and Mailgun APIs for email sending.
 
 #### Sendgrid
-Make sure to update the file variables.env with the Sendgrid API Key. This will be available to you once you sign up with Sendgrid.
+Make sure to update the file `variables.env` with the Sendgrid API Key. This will be available to you once you sign up with Sendgrid.
 See [https://app.sendgrid.com/settings/api_keys](https://app.sendgrid.com/settings/api_keys)
 
 #### Mailgun
-Make sure to update the file variables.env with the Mailgun Domain and Mailgun API Keys. This will be available to you once you sign up with Mailgun.
+Make sure to update the file `variables.env` with the Mailgun Domain and Mailgun API Keys. This will be available to you once you sign up with Mailgun.
 See [https://app.mailgun.com/app/account/security/api_keys](https://app.mailgun.com/app/account/security/api_keys) for your API key.
 See [https://app.mailgun.com/app/sending/domains](https://app.mailgun.com/app/sending/domains) to add your custom domain.
 
