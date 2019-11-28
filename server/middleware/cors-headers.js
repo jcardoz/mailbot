@@ -10,14 +10,13 @@
  * @example
  * <code>
  * const express = require('express');
- * const corsHeaders = require('./middleware/cors-helper');
+ * const corsHeaders = require('./middleware/cors-headers');
  *
  * const app = express();
  * app.use(corsHeaders);
  * </code>
  */
 module.exports = (request, response, next) => {
-  // http://expressjs.com/en/4x/api.html#res.set
   response.set({
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'DELETE,GET,PATCH,POST,PUT',
