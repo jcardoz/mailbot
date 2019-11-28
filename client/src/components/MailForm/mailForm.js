@@ -1,17 +1,18 @@
 import React from 'react';
 import axios from 'axios';
-
+import InputField from '../InputField/inputField';
+import TextArea from '../TextArea/textArea';
 import './mailForm.css';
 
 class MailForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      to:'', // Stores the to field
-      cc: '', // Stores the cc field
-      bcc: '', // Stores the bcc field
-      subject: '', // Stores the subject field
-      message: '', // Stores the message field
+      to: 'jcardoz@deloitte.com, cardoz.jonathan@gmail.com', // Stores the to field
+      cc: 'cardoz.jonathan@gmail.com', // Stores the cc field
+      bcc: 'dani.weds.jona@gmail.com', // Stores the bcc field
+      subject: 'test bcc and cc blank', // Stores the subject field
+      message: 'test bcc and cc blank', // Stores the message field
       output: '' // Console output from the mail server
     };
 
@@ -128,34 +129,45 @@ class MailForm extends React.Component {
           {/* Begin form here */}
           <form method="post" name="mailForm" >
             {/* To */}
-            <div className="formControl">
-              <label>To</label>
-              <input type="text" name="to" value={this.state.to} onChange={this.handleChange} />
-            </div>
+            <InputField
+              label={"To"}
+              name={'to'}
+              onChangeHandler={this.handleChange}
+              value={this.state.to}
+              placeholder={''} />
 
             {/* cc */}
-            <div className="formControl">
-              <label>CC</label>
-              <input type="text" name="cc" value={this.state.cc} onChange={this.handleChange} />
-            </div>
-            
+            <InputField
+              label={"CC"}
+              name={'cc'}
+              onChangeHandler={this.handleChange}
+              value={this.state.cc}
+              placeholder={''} />
+
             {/* bcc */}
-            <div className="formControl">
-              <label>BCC</label>
-              <input type="text" name="bcc" value={this.state.bcc} onChange={this.handleChange} />
-            </div>
+            <InputField
+              label={"BCC"}
+              name={'bcc'}
+              onChangeHandler={this.handleChange}
+              value={this.state.bcc}
+              placeholder={''} />
 
             {/* Subject */}
-            <div className="formControl">
-              <label>Subject</label>
-              <input type="text" name="subject" value={this.state.subject} onChange={this.handleChange} />
-            </div>
-            
+            <InputField
+              label={"Subject"}
+              name={'subject'}
+              onChangeHandler={this.handleChange}
+              value={this.state.subject}
+              placeholder={''} />
+
             {/* Message */}
-            <div className="formControl">
-              <label>Message</label>
-              <textarea name="message" value={this.state.message} onChange={this.handleChange}/>
-            </div>
+            <TextArea 
+              label={"Message"} 
+              name={"message"} 
+              value={this.state.message} 
+              onChangeHandler={this.handleChange}
+              placeholder={''}
+              />
 
             {/* Send Buttons */}
             <div className="formControl">
