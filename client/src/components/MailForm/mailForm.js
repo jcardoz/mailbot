@@ -7,13 +7,15 @@ class MailForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      to:'',
-      cc: '',
-      bcc: '',
-      subject: '',
-      message: ''
+      to:'', // Stores the to field
+      cc: '', // Stores the cc field
+      bcc: '', // Stores the bcc field
+      subject: '', // Stores the subject field
+      message: '', // Stores the message field
+      output: '' // Console output from the mail server
     };
 
+    // Setup the event handlers
     this.handleChange = this.handleChange.bind(this);
     this.handleMailGun = this.handleMailGun.bind(this);
     this.handleSendGrid = this.handleSendGrid.bind(this);
@@ -35,6 +37,10 @@ class MailForm extends React.Component {
     // TODO: set in axios helper
     const baseURL = 'http://localhost:7000';
 
+    this.setState({
+      output: ``
+    });
+    
     let {
       to,
       cc,
@@ -56,9 +62,16 @@ class MailForm extends React.Component {
     axios.post(`${baseURL}/sendgrid`, mailInformation)
       .then(res => {
         console.log('success from Sendgrid');
+        this.setState({
+          output: `mail sent successfully`
+        });
+
         console.log(res);
       }, (error) => {
         console.log(error.message);
+        this.setState({
+          output: `Something went wrong. ${error.message}`
+        });
       });
 
   }
@@ -68,6 +81,10 @@ class MailForm extends React.Component {
     const from = 'cardoz.jonathan@gmail.com';
     // TODO: set in axios helper
     const baseURL = 'http://localhost:7000';
+
+    this.setState({
+      output: ``,
+    });
 
     let {
       to,
@@ -91,8 +108,14 @@ class MailForm extends React.Component {
       .then(res => {
         console.log('success from Mailgun');
         console.log(res);
+        this.setState({
+          output: `mail sent successfully`
+        });
       }, (error) => {
         console.log(error.message);
+        this.setState({
+          output: `Something went wrong. ${error.message}`
+        });
       });
   }
 
@@ -140,6 +163,11 @@ class MailForm extends React.Component {
               <input type="button" className="button" value="Send Email via SendGrid" onClick={this.handleSendGrid} />
             </div>
           </form>
+          {/* End form */}
+          {/* Output Console: Show the response of the form here */}
+          <div className={this.state.output?'console':'hide'}>
+            {this.state.output}
+          </div>
         </div>
       </div>  
     );
