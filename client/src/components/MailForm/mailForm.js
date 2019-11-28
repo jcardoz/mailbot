@@ -12,7 +12,7 @@ class MailForm extends React.Component {
       bcc: '',
       subject: '',
       message: ''
-    }
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleMailGun = this.handleMailGun.bind(this);
@@ -35,15 +35,32 @@ class MailForm extends React.Component {
     // TODO: set in axios helper
     const baseURL = 'http://localhost:7000';
 
-    let {to, cc, bcc, subject, message} = this.state;
-    
-    axios.get(`${baseURL}/sendgrid/${subject}/${message}/${from}/${to}/${cc}/${bcc}/`)
+    let {
+      to,
+      cc,
+      bcc,
+      subject,
+      message
+    } = this.state;
+
+    let mailInformation = {
+      to,
+      from,
+      cc,
+      bcc,
+      subject,
+      content: message
+    };
+
+    console.log(mailInformation);
+    axios.post(`${baseURL}/sendgrid`, mailInformation)
       .then(res => {
         console.log('success from Sendgrid');
         console.log(res);
-      },(error) => {
+      }, (error) => {
         console.log(error.message);
       });
+
   }
   
   handleMailGun(event) {
@@ -52,12 +69,29 @@ class MailForm extends React.Component {
     // TODO: set in axios helper
     const baseURL = 'http://localhost:7000';
 
-    let {to, cc, bcc, subject, message} = this.state;
-    axios.get(`${baseURL}/mailgun/${subject}/${message}/${from}/${to}/${cc}/${bcc}/`)
+    let {
+      to,
+      cc,
+      bcc,
+      subject,
+      message
+    } = this.state;
+
+    let mailInformation = {
+      to,
+      from,
+      cc,
+      bcc,
+      subject,
+      message
+    };
+
+    console.log(mailInformation);
+    axios.post(`${baseURL}/mailgun`, mailInformation)
       .then(res => {
         console.log('success from Mailgun');
         console.log(res);
-      },(error) => {
+      }, (error) => {
         console.log(error.message);
       });
   }
