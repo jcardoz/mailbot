@@ -42,6 +42,7 @@ h3 {
   padding: 0 30px;
   outline: none;
   border: 1px solid transparent;
+  overflow: hidden;
   transition: border 1s;
 }
 
