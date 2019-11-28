@@ -26,7 +26,7 @@ module.exports = (request, response, next) => {
 
   // intercept OPTIONS method
   if (request.method === 'OPTIONS') {
-    response.send(200);
+    response.sendStatus(200);
   } else {
     next();
   }
