@@ -1,7 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 
+// Style import
 import './mailForm.css';
+
+// helper
+import { formatMail } from '../../helpers/sendMailhelper';
 
 class MailForm extends React.Component {
   constructor(props) {
@@ -37,13 +41,23 @@ class MailForm extends React.Component {
 
     let {to, cc, bcc, subject, message} = this.state;
     
-    axios.get(`${baseURL}/sendgrid/${subject}/${message}/${from}/${to}/${cc}/${bcc}/`)
-      .then(res => {
-        console.log('success from Sendgrid');
-        console.log(res);
-      },(error) => {
-        console.log(error.message);
-      });
+    // axios.get(`${baseURL}/sendgrid/${subject}/${message}/${from}/${to}/${cc}/${bcc}/`)
+    //   .then(res => {
+    //     console.log('success from Sendgrid');
+    //     console.log(res);
+    //   },(error) => {
+    //     console.log(error.message);
+    //   });
+    let data = {
+      to,
+      from,
+      cc: cc?cc:'',
+      bcc: bcc?bcc:'',
+      subject,
+      message
+    };
+    console.log(data);
+    axios.post(`${baseURL}/sendgrid`, data).then((res)=>{console.log(res);});
   }
   
   handleMailGun(event) {
