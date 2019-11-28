@@ -8,11 +8,11 @@ class MailForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      to: 'jcardoz@deloitte.com, cardoz.jonathan@gmail.com', // Stores the to field
-      cc: 'cardoz.jonathan@gmail.com', // Stores the cc field
-      bcc: 'dani.weds.jona@gmail.com', // Stores the bcc field
-      subject: 'test bcc and cc blank', // Stores the subject field
-      message: 'test bcc and cc blank', // Stores the message field
+      to: '', // Stores the to field
+      cc: '', // Stores the cc field
+      bcc: '', // Stores the bcc field
+      subject: '', // Stores the subject field
+      message: '', // Stores the message field
       output: '' // Console output from the mail server
     };
 
