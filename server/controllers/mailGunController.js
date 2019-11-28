@@ -1,22 +1,19 @@
+
 exports.mailHandler = (request, response) => {
   const mailgun = require("mailgun-js");
+  const { generateMailgunMessageFormat }  = require("../helpers/message-formatter");
+
   const DOMAIN = process.env.MAILGUN_DOMAIN
   const mg = mailgun({
     apiKey: process.env.MAILGUN_API_KEY,
     domain: DOMAIN
   });
 
-  // TODO: Handle empty fields
-  const messageInformation = {
-    from: request.body.from,
-    to: request.body.to,
-    cc: request.body.cc,
-    bcc: request.body.bcc,
-    subject: request.body.subject,
-    text: request.body.message
-  };
-
+  // parse the message information
+  const messageInformation = generateMailgunMessageFormat(request);
+  
   mg.messages().send(messageInformation, function (error, body) {
+    console.log(body);
     response.json(body);
   }, (error) => {
     console.log(error.message);
