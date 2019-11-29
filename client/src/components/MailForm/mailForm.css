@@ -1,0 +1,84 @@
+/* Container */
+.mailForm {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Heading */
+h3 {
+  font-size: 2em;
+  font-weight: 200;
+  font-style: italic;
+  margin: 10px;
+}
+
+/* form control */
+.formControl {
+  margin: 10px 0;
+}
+
+/* form labels */
+.formControl label {
+  display: block;
+  font-size: 1em;
+  font-weight: 200;
+  text-align: left;
+  margin: 0 0 10px 10px;
+}
+
+/* input fields */
+.formControl input[type="text"],
+.formControl textarea {
+  display: block;
+  width: 100%;
+  font-size: 1em;
+  line-height: 1.5;
+  color: #666;
+  display: block;
+  width: 90%;
+  background: #e6e6e6;
+  height: 50px;
+  border-radius: 20px;
+  padding: 0 30px;
+  outline: none;
+  border: 1px solid transparent;
+  overflow: hidden;
+  transition: border 1s;
+}
+
+.formControl input[type="text"]:focus,
+.formControl textarea:focus {
+  border: 1px solid #666;
+}
+
+/* text area */
+.formControl textarea {
+  resize: vertical;
+  padding: 10px 30px;
+
+}
+
+/* form buttons */
+.formControl input[type="button"] {
+  display: inline-block;
+  color: #fff;
+  background-color: #57b846;
+  font-size: 1em;
+  padding: 0 20px;
+  margin: 30px 10px 0 10px;
+  height: 50px;
+  border-radius: 25px;
+  border: none;
+  transition: background-color 1s;
+}
+
+/* Button Focus & Hover styles */
+.formControl input[type="button"]:hover,
+.formControl input[type="button"]:focus {
+  outline: none;
+  background-color: #000;
+}
+
+.formControl input[type="button"]:hover {
+  cursor: pointer;
+}

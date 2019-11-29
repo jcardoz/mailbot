@@ -1,9 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express', content: 'this is some sample content' });
-});
+const mailGunController = require('../controllers/mailGunController');
+const sendGridController = require('../controllers/sendGridController');
+
+// Mailgun
+router.post('/mailgun', mailGunController.mailHandler);
+
+// Sendgrid
+router.post('/sendgrid', sendGridController.mailHandler);
 
 module.exports = router;

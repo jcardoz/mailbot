@@ -1,16 +1,18 @@
 {
   "name": "mailbot",
   "version": "1.0.0",
-  "description": "",
+  "description": "simple application to send email",
   "main": "index.js",
   "scripts": {
     "client": "cd client && npm start",
+    "client-install": "cd client && npm install",
     "server": "cd server && npm start",
+    "server-install": "cd server && npm install",
     "start": "concurrently \"cd client && npm run start\" \"cd server && npm run start\""
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["react", "reactjs", "node"],
+  "author": "Jonathan Cardoz",
+  "license": "MIT",
   "devDependencies": {
     "concurrently": "^5.0.0"
   }
