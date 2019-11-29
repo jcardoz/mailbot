@@ -3,6 +3,7 @@ import axios from 'axios';
 import InputField from '../InputField/inputField';
 import TextArea from '../TextArea/textArea';
 import './mailForm.css';
+import {generateMailGunRequest, generateSendGridRequest } from '../../helpers/mailHelpers';
 
 class MailForm extends React.Component {
   constructor(props) {
@@ -33,31 +34,14 @@ class MailForm extends React.Component {
   }
 
   handleSendGrid(event) {
-    // TODO: move to helper
-    const from = 'cardoz.jonathan@gmail.com';
-    // TODO: set in axios helper
+   // TODO: set in axios helper
     const baseURL = 'http://localhost:7000';
 
     this.setState({
       output: ``
     });
-    
-    let {
-      to,
-      cc,
-      bcc,
-      subject,
-      message
-    } = this.state;
-
-    let mailInformation = {
-      to,
-      from,
-      cc,
-      bcc,
-      subject,
-      content: message
-    };
+    // Format the information
+    let mailInformation = generateSendGridRequest(this.state);
 
     console.log(mailInformation);
     axios.post(`${baseURL}/sendgrid`, mailInformation)
@@ -78,8 +62,6 @@ class MailForm extends React.Component {
   }
   
   handleMailGun(event) {
-    // TODO: move to helper
-    const from = 'cardoz.jonathan@gmail.com';
     // TODO: set in axios helper
     const baseURL = 'http://localhost:7000';
 
@@ -87,22 +69,8 @@ class MailForm extends React.Component {
       output: ``,
     });
 
-    let {
-      to,
-      cc,
-      bcc,
-      subject,
-      message
-    } = this.state;
-
-    let mailInformation = {
-      to,
-      from,
-      cc,
-      bcc,
-      subject,
-      message
-    };
+    // Format the information
+    let mailInformation = generateMailGunRequest(this.state);
 
     console.log(mailInformation);
     axios.post(`${baseURL}/mailgun`, mailInformation)
