@@ -1,9 +1,9 @@
 import React from 'react';
-import axios from 'axios';
 import InputField from '../InputField/inputField';
 import TextArea from '../TextArea/textArea';
 import './mailForm.css';
-import {generateMailGunRequest, generateSendGridRequest } from '../../helpers/mailHelpers';
+import { generateMailGunRequest, generateSendGridRequest } from '../../helpers/mailHelpers';
+import {makePOSTcall} from '../../helpers/serviceCallHelper';
 
 class MailForm extends React.Component {
   constructor(props) {
@@ -34,36 +34,31 @@ class MailForm extends React.Component {
   }
 
   handleSendGrid(event) {
-   // TODO: set in axios helper
-    const baseURL = 'http://localhost:7000';
-
     this.setState({
       output: ``
     });
     // Format the information
     let mailInformation = generateSendGridRequest(this.state);
 
-    console.log(mailInformation);
-    axios.post(`${baseURL}/sendgrid`, mailInformation)
-      .then(res => {
-        console.log('success from Sendgrid');
-        this.setState({
-          output: `mail sent successfully`
-        });
-
-        console.log(res);
-      }, (error) => {
-        console.log(error.message);
-        this.setState({
-          output: `Something went wrong. ${error.message}`
-        });
+    const successHandler = (res) => {
+      console.log('success from Sendgrid');
+      this.setState({
+        output: `mail sent successfully`
       });
+    };
+
+    const errorHandler = (error) => {
+      console.log(error.message);
+      this.setState({
+        output: `Something went wrong. ${error.message}`
+      });
+    };
+    // Make the call to send the mail
+    makePOSTcall('sendgrid', mailInformation, successHandler, errorHandler);
 
   }
   
   handleMailGun(event) {
-    // TODO: set in axios helper
-    const baseURL = 'http://localhost:7000';
 
     this.setState({
       output: ``,
@@ -72,20 +67,21 @@ class MailForm extends React.Component {
     // Format the information
     let mailInformation = generateMailGunRequest(this.state);
 
-    console.log(mailInformation);
-    axios.post(`${baseURL}/mailgun`, mailInformation)
-      .then(res => {
-        console.log('success from Mailgun');
-        console.log(res);
-        this.setState({
-          output: `mail sent successfully`
-        });
-      }, (error) => {
-        console.log(error.message);
-        this.setState({
-          output: `Something went wrong. ${error.message}`
-        });
+    const successHandler = (res) => {
+      console.log('success from Mailgun');
+      this.setState({
+        output: `mail sent successfully`
       });
+    };
+
+    const errorHandler = (error) => {
+      console.log(error.message);
+      this.setState({
+        output: `Something went wrong. ${error.message}`
+      });
+    };
+    // Make the call to send the mail
+    makePOSTcall('mailgun', mailInformation, successHandler, errorHandler);
   }
 
   render() {
