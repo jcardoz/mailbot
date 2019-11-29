@@ -1,9 +1,9 @@
 import axios from 'axios';
-const BASEURL = 'http://localhost:7000';
+const BASEURL = 'http://localhost:7000'; // TODO: Make configurable based on local/prod environment
 
-const makePOSTcall = (URL, messageInformation, successHandler, errorHandler) => {
-  
-  axios.post(`${BASEURL}/${URL}`, messageInformation)
+const makePOSTcall = (APIEndpoint, messageInformation, successHandler, errorHandler) => {
+
+  axios.post(`${BASEURL}/${APIEndpoint}`, messageInformation)
     .then((res) => {
       return successHandler(res);
     }, (err) => {
@@ -11,4 +11,6 @@ const makePOSTcall = (URL, messageInformation, successHandler, errorHandler) => 
     });
 };
 
-export {makePOSTcall} ;
+export {
+  makePOSTcall
+};

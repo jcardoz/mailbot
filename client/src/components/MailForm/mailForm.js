@@ -3,7 +3,7 @@ import InputField from '../InputField/inputField';
 import TextArea from '../TextArea/textArea';
 import './mailForm.css';
 import { generateMailGunRequest, generateSendGridRequest } from '../../helpers/mailHelpers';
-import {makePOSTcall} from '../../helpers/serviceCallHelper';
+import { makePOSTcall } from '../../helpers/serviceCallHelper';
 
 class MailForm extends React.Component {
   constructor(props) {
