@@ -3,8 +3,7 @@ exports.mailHandler = (request, response) => {
   const mailgun = require("mailgun-js");
   const { generateMailgunMessageFormat }  = require("../helpers/message-formatter");
 
-  const DOMAIN = process.env.MAILGUN_DOMAIN;
-
+  const DOMAIN = process.env.MAILGUN_DOMAIN
   const mg = mailgun({
     apiKey: process.env.MAILGUN_API_KEY,
     domain: DOMAIN
