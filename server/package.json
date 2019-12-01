@@ -16,5 +16,8 @@
     "mailgun-js": "^0.22.0",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.1"
+  },
+  "engines": {
+    "node": "12.13.1"
   }
 }
