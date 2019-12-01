@@ -6,7 +6,7 @@ const sendGridController = require('../controllers/sendGridController');
 
 // SAMPLE PAGE
 router.get('/', function(req, res, next) {
-  res.render('HI', { title: 'Express', content: 'this is some sample content' });
+  res.render('index', { title: 'Express', content: 'this is some sample content' });
 });
 
 // Mailgun
