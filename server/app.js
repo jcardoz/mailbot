@@ -28,7 +28,14 @@ require('dotenv').config({
 // addition of CORS headers
 app.use(corsHeaders);
 
+// get reference to the client build directory
+const staticFiles = express.static(path.join(__dirname, '../../client/build'));
+// pass the static files (react app) to the express app. 
+app.use(staticFiles);
+
 app.use('/', indexRouter);
+
+app.use('/*', staticFiles);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

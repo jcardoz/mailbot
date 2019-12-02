@@ -8,13 +8,19 @@
     "client-install": "cd client && npm install",
     "server": "cd server && npm start",
     "server-install": "cd server && npm install",
-    "install": "(cd client && npm install) && (cd server && npm install)",
-    "start": "concurrently \"cd client && npm run start\" \"cd server && npm run start\""
+    "build": "(cd client && npm install) && (cd server && npm install)",
+    "start": "concurrently \"cd client && npm run start\" \"cd server && npm run start\"",
+    "start:prod": "cd server && npm run start:prod",
+    "heroku-postbuild": "npm run build"
+
   },
   "keywords": ["react", "reactjs", "node"],
   "author": "Jonathan Cardoz",
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^5.0.0"
-  }
+  },
+  "engines": {
+    "node": "12.13.1"
+ }
 }
