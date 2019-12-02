@@ -19,8 +19,8 @@
 module.exports = (request, response, next) => {
   response.set({
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'DELETE,GET,PATCH,POST,PUT',
-    'Access-Control-Allow-Headers': 'Content-Type,Authorization'
+    'Access-Control-Allow-Methods': 'DELETE,GET,PATCH,POST,PUT, OPTIONS',
+    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
   });
 
   // intercept OPTIONS method
