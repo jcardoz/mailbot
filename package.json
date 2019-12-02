@@ -8,6 +8,7 @@
     "client-install": "cd client && npm install",
     "server": "cd server && npm start",
     "server-install": "cd server && npm install",
+    "install": "(cd client && npm install) && (cd server && npm install)",
     "start": "concurrently \"cd client && npm run start\" \"cd server && npm run start\""
   },
   "keywords": ["react", "reactjs", "node"],
