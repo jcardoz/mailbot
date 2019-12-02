@@ -19,7 +19,7 @@
   "keywords": ["react", "reactjs", "node"],
   "author": "Jonathan Cardoz",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "concurrently": "^5.0.0"
   },
   "engines": {
