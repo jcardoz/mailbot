@@ -24,6 +24,12 @@ npm run server-install
 
 **Note:** The server application will run on port **7000**. Ensure that no other application is currently using that port.
 
+You can also run 
+```
+npm run install 
+```
+which will install both the client and server dependencies.
+
 ### API integration setup
 
 The server project uses Sendgrid and Mailgun APIs for email sending.
