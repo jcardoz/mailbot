@@ -10,7 +10,7 @@
     "server-install": "cd server && npm install",
     "install": "(cd client && npm install) && (cd server && npm install)",
     "build": "concurrently \"cd client && npm run build\" \"cd server && npm run build\"",
-    "start": "concurrently \"cd client && PORT=3000 npm start\" \"cd server && PORT=7000 npm start\"",
+    "start": "concurrently \"cd client && npm start\" \"cd server && npm start\"",
     "start:prod": "cd server && npm run start:prod",
     "heroku-postbuild": "npm run build"
   },
