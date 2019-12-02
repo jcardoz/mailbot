@@ -12,9 +12,7 @@
     "build": "concurrently \"cd client && npm run build\" \"cd server && npm run build\"",
     "start": "concurrently \"cd client && PORT=3000 npm start\" \"cd server && PORT=7000 npm start\"",
     "start:prod": "cd server && npm run start:prod",
-    "heroku-postbuild": "npm run build",
-    "heroku-prebuild": "npm install"
-
+    "heroku-postbuild": "npm run build"
   },
   "keywords": ["react", "reactjs", "node"],
   "author": "Jonathan Cardoz",
