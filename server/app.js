@@ -39,7 +39,7 @@ const staticFiles = express.static(path.join(__dirname, '../../client/build'));
 // pass the static files (react app) to the express app. 
 app.use(staticFiles);
 
-app.use('/api', indexRouter);
+// app.use('/api', indexRouter);
 
 app.use('/*', staticFiles);
 
