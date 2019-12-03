@@ -19,9 +19,13 @@
 module.exports = (request, response, next) => {
   response.set({
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'DELETE,GET,PATCH,POST,PUT,OPTIONS',
-    'Access-Control-Allow-Headers': 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json',
-    'Access-Control-Max-Age': '86400'
+    'Access-Control-Allow-Methods': 'DELETE,GET,PATCH,POST,PUT',
+    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
   });
-  next();
+  // intercept OPTIONS method
+  if (request.method === 'OPTIONS') {
+    response.sendStatus(200);
+  } else {
+    next();
+  }
 };

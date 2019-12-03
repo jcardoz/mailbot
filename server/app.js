@@ -18,8 +18,8 @@ app.use(express.urlencoded({
   extended: false
 }));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
 
+// Handle preflight OPTIONS request
 const corsOptions = {
   origin: true
 };
@@ -32,17 +32,15 @@ require('dotenv').config({
 });
 
 // addition of CORS headers
-app.use(cors());
+app.use(corsHeaders);
 
 // get reference to the client build directory
-const staticFiles = express.static(path.join(__dirname, '../../client/build'));
+const staticFiles = express.static(path.join(__dirname, '../../client/build'))
 // pass the static files (react app) to the express app. 
 app.use(staticFiles);
 
-app.use(express.Router());
-// app.use('/api', indexRouter);
+app.use('/', indexRouter);
 
-// any routes not picked up by the server api will be handled by the react router
 app.use('/*', staticFiles);
 
 // catch 404 and forward to error handler
