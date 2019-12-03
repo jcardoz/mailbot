@@ -24,7 +24,7 @@ const corsOptions = {
   origin: true
 };
 
-app.options('*', cors(corsOptions)); // preflight OPTIONS; 
+app.options('*', cors(corsOptions)); // preflight OPTIONS;
 
 // import environmental variables from our variables.env file
 require('dotenv').config({
@@ -32,14 +32,14 @@ require('dotenv').config({
 });
 
 // addition of CORS headers
-app.use(corsHeaders);
+app.use(cors());
 
 // get reference to the client build directory
 const staticFiles = express.static(path.join(__dirname, '../../client/build'));
 // pass the static files (react app) to the express app. 
 app.use(staticFiles);
 
-app.use('/', indexRouter);
+app.use('/api', indexRouter);
 
 app.use('/*', staticFiles);
 
