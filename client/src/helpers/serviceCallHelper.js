@@ -1,6 +1,6 @@
 import axios from 'axios';
 // Identify the base path based on the env variable
-const BASEURL = 'https://mailbot-server.herokuapp.com';
+const BASEURL = process.env.REACT_APP_Client_API_BasePath || 'http://localhost:7000';
 
 const makePOSTcall = (APIEndpoint, messageInformation, successHandler, errorHandler) => {
 
