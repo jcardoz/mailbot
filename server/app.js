@@ -5,7 +5,7 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 const corsHeaders = require('./middleware/cors-headers');
 let indexRouter = require('./routes/index');
-
+let cors = require('cors');
 let app = express();
 
 // view engine setup
@@ -18,7 +18,13 @@ app.use(express.urlencoded({
   extended: false
 }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+// Handle preflight OPTIONS request
+const corsOptions = {
+  origin: true
+};
+
+app.options('*', cors(corsOptions)); // preflight OPTIONS;
 
 // import environmental variables from our variables.env file
 require('dotenv').config({
@@ -28,7 +34,14 @@ require('dotenv').config({
 // addition of CORS headers
 app.use(corsHeaders);
 
+// get reference to the client build directory
+const staticFiles = express.static(path.join(__dirname, '../../client/build'))
+// pass the static files (react app) to the express app. 
+app.use(staticFiles);
+
 app.use('/', indexRouter);
+
+app.use('/*', staticFiles);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
