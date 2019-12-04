@@ -1,5 +1,5 @@
 import axios from 'axios';
-const BASEURL = process.env.Client_API_BasePath || 'http://localhost:7000';
+const BASEURL = 'http://localhost:7000'; // TODO: Make configurable based on local/prod environment
 
 const makePOSTcall = (APIEndpoint, messageInformation, successHandler, errorHandler) => {
 
